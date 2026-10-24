@@ -126,7 +126,9 @@ CopilotAudit_CL
 
 ### 4. Anomalous Copilot tool calls
 
-The session produced **three `Graph.SearchFiles` and five `Graph.ReadFile` calls** unrelated to summarizing the report. Matching `OfficeActivity_CL` events confirmed SharePoint file access.
+
+While reviewing the Copilot audit logs, I identified **three `Graph.SearchFiles` calls and five `Graph.ReadFile` calls** that were unrelated to the user's request to summarize the document. I then compared these events with the `OfficeActivity_CL` logs and confirmed that SharePoint files had been accessed.
+
 
 
 **Evidence — Anomalous Copilot Tool Calls**
