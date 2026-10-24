@@ -44,12 +44,14 @@ The report classifies the incident as **external input manipulation / indirect p
 
 **Impact caveat:** Access to 13 files does **not** prove the contents of all 13 were exfiltrated. The reported encoded URL parameters contained filenames. A network/proxy corroboration step would be needed to establish outbound retrieval and transmitted data beyond the audit response text.
 
+
 ## Investigation artifacts
 
-- [Detailed case study](investigation-report.md)
-- [KQL hunting queries](kql-queries/) — 11 queries transcribed from the report, in investigation order
-- [Response and containment plan](containment-plan.md)
-- [Evidence and publication guidance](screenshots/README.md)
+- [Full Threat Hunt Investigation Report](01-investigation-report.md) — Detailed investigation findings, attack timeline, KQL analysis, and supporting screenshots.
+- [KQL Hunting Queries](kql-queries/) — 11 queries documenting the investigation process.
+- [Containment and Remediation Plan](02-containment-plan.md) — Recommended containment, investigation, and security improvements.
+- [Evidence Screenshots](screenshots/) — Seven screenshots supporting key findings from the investigation.
+
 
 ## Recommended response
 
