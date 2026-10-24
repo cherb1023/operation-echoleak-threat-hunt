@@ -1,13 +1,9 @@
- // Operation ECHOLEAK - Copilot Response and Potential Data Exposure
- // Purpose: Retrieve Copilot responses for examination of suspicious external URLs.
- // Data source: CopilotAudit_CL (training environment)
- // Investigation date: September 20, 2026 (UTC)
- // Note: RunId and table names are specific to this lab.
- // Evidence limitation: Response records alone do not confirm external URL requests
- // or successful transmission of document contents.
+// Operation ECHOLEAK - Copilot Response Review
+// Reviewing Copilot's responses for suspicious external links.
+// Checking for encoded filenames that may have exposed sensitive information.
 
- CopilotAudit_CL
- | where RunId == "el--17-20260920"
- | where InteractionType == "Response"
- | where TimeGenerated between (datetime(2026-09-20 10:42:00) .. datetime(2026-09-20 10:44:00))
- | order by TimeGenerated asc
+CopilotAudit_CL
+| where RunId == "el--17-20260920"
+| where InteractionType == "Response"
+| where TimeGenerated between (datetime(2026-09-20 10:42:00) .. datetime(2026-09-20 10:44:00))
+| order by TimeGenerated asc
