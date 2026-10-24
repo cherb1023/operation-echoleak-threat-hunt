@@ -187,6 +187,10 @@ OfficeActivity_CL
 
 At **10:43:08 UTC**, `CopilotResponse` included four external markdown image URLs pointing to `metrics-cdn.analyticshub.io`, with Base64-encoded **filenames** in the `d=` parameter. This exposed filenames in the response and suggested a potential image-rendering exfiltration path. The audit logs do **not** confirm URL retrieval or exfiltration of file contents.
 
+**Evidence — Base64-Encoded Filename Leakage**
+
+![Copilot response containing external image URLs with Base64-encoded filenames](screenshots/evidence-10.png)
+
 **Original hunting query:** [`07-exfiltration-response.kql`](kql-queries/07-exfiltration-response.kql)
 
 ```kql
