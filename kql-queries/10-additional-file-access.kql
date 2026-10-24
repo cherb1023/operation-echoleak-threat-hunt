@@ -1,5 +1,12 @@
-// Source: Operation ECHOLEAK investigation report
-// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
+// Operation ECHOLEAK - Additional File Access Investigation
+// Purpose: Identify file-access activity after the initial suspicious
+// Copilot interactions to investigate possible continued activity.
+// Data source: OfficeActivity_CL (training environment)
+// Investigation start: September 20, 2026, 10:44 UTC
+// Note: RunId, table names, and user identifiers are specific to this lab.
+// Reviewing any additional file activity after 10:44 UTC.
+// I'll compare these results with the Copilot logs to see if the activity is related.
+
 OfficeActivity_CL
 | where RunId == "el--17-20260920"
 | where UserId == "emily.chen@cormorantcapital.com"
