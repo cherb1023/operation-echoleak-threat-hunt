@@ -1,5 +1,11 @@
-// Source: Operation ECHOLEAK investigation report
-// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
+// Operation ECHOLEAK - Historical Copilot Activity Baseline
+// Purpose: Review Copilot activity before the suspicious session
+// to compare normal usage with the observed tool calls and searches.
+// Data source: CopilotAudit_CL (training environment)
+// Investigation cutoff: September 20, 2026, 10:42 UTC
+// Note: Results are limited to historical records available for this RunId.
+// Baseline counts and behavioral conclusions require analysis of the results.
+
 CopilotAudit_CL
 | where RunId == "el--17-20260920"
 | where TimeGenerated < datetime(2026-09-20 10:42:00)
