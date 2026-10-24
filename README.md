@@ -59,7 +59,12 @@ Block the malicious sender and external domain, quarantine the document, investi
 
 ## Scope and reproducibility
 
-Queries refer to custom lab tables and a specific `RunId`, so they are **not** plug-and-play in a different Microsoft 365 tenant. The underlying document and its embedded prompt-injection payload are not included. No raw logs or screenshots are included in this public-ready starter package pending privacy review.
+Queries refer to custom lab tables and a specific `RunId`, so they are **not** plug-and-play in a different Microsoft 365 tenant.
+
+The repository includes seven evidence screenshots from the original investigation report, along with 11 KQL queries and supporting analysis. The underlying Word document, its embedded prompt-injection payload, and raw audit logs are not included.
+
+This project is based on a controlled training scenario. All screenshots and scenario identifiers should be reviewed for sensitive information before the repository is made public.
+
 
 ## Author
 
