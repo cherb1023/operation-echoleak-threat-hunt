@@ -1,0 +1,7 @@
+// Source: Operation ECHOLEAK investigation report
+// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
+CopilotAudit_CL
+| where RunId == "el--17-20260920"
+| where InteractionType == "Response"
+| where TimeGenerated between (datetime(2026-09-20 10:42:00) .. datetime(2026-09-20 10:44:00))
+| order by TimeGenerated asc

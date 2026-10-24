@@ -1,0 +1,64 @@
+# Operation ECHOLEAK — Microsoft 365 Copilot Prompt Injection Threat Hunt
+
+**Portfolio case study | Microsoft 365 Copilot • KQL • Microsoft 365 audit telemetry • Incident response**
+
+> **Training-case disclosure:** This repository is prepared from an investigation exercise report. Confirm the environment was simulated and that all identifiers and evidence are authorized for public release before publishing.
+
+## Executive summary
+
+This investigation examined suspicious Microsoft 365 Copilot file access following an externally delivered Word document. The case report attributes the activity to **indirect prompt injection**: the user requested an ordinary document summary, but Copilot subsequently searched for and read unrelated sensitive files and returned external image URLs containing encoded filenames.
+
+**Observed in the report:** 13 sensitive files accessed (five initially, eight subsequently), eight initial Graph tool calls (three `Graph.SearchFiles`, five `Graph.ReadFile`), a separate system-prompt/configuration disclosure, and an external image-URL exfiltration mechanism. **Important limitation:** the report indicates the encoded URLs exposed filenames, not the contents of the accessed files; actual delivery of HTTP requests is not independently established by the cited audit records.
+
+## Tools and skills
+
+- Log Analytics workspace; Kusto Query Language (KQL)
+- `OfficeActivity_CL`, `CopilotAudit_CL`, `EntraSignIn_CL`
+- Microsoft 365 Copilot and Graph tool-call audit analysis
+- Baseline comparison, timeline reconstruction, MITRE ATLAS technique mapping, response planning
+
+## Investigation timeline (UTC, 20 September 2026)
+
+| Time | Reported event |
+| --- | --- |
+| 09:15:22 | External email delivered with a Word attachment |
+| 10:42:08 | Document accessed |
+| 10:42:35 | User requested a summary from Copilot |
+| 10:42:41–10:42:55 | Three file searches and five file reads |
+| 10:43:08 | Copilot response included external image links with encoded filenames |
+| 10:44:19 | System prompt and enterprise configuration disclosed in a response |
+| 10:45:30–10:45:45 | Additional keyword searches |
+| 10:45:51–10:46:30 | Eight further sensitive files accessed |
+
+## Attack chain
+
+```text
+External email → Word attachment → Copilot summary request
+→ Graph.SearchFiles → Graph.ReadFile → external image URLs
+→ configuration disclosure → additional sensitive-file searches/access
+```
+
+## Findings and confidence
+
+The report classifies the incident as **external input manipulation / indirect prompt injection** (MITRE ATLAS `AML.T0051.001`). The observed Copilot behavior differs from the reported baseline of 90 events from 16 users with no ToolCall/Search events. Sign-in telemetry did not show anomalous sign-ins in the reviewed window. These observations support the case classification but are bounded by the provided lab telemetry.
+
+**Impact caveat:** Access to 13 files does **not** prove the contents of all 13 were exfiltrated. The reported encoded URL parameters contained filenames. A network/proxy corroboration step would be needed to establish outbound retrieval and transmitted data beyond the audit response text.
+
+## Investigation artifacts
+
+- [Detailed case study](investigation-report.md)
+- [KQL hunting queries](kql-queries/) — 11 queries transcribed from the report, in investigation order
+- [Response and containment plan](containment-plan.md)
+- [Evidence and publication guidance](screenshots/README.md)
+
+## Recommended response
+
+Block the malicious sender and external domain, quarantine the document, investigate other recipients and affected Copilot sessions, assess file-owner impact, review permissions and external-content rendering controls, and create detections for anomalous tool-call bursts and encoded external links. See the [response plan](containment-plan.md).
+
+## Scope and reproducibility
+
+Queries refer to custom lab tables and a specific `RunId`, so they are **not** plug-and-play in a different Microsoft 365 tenant. The underlying document and its embedded prompt-injection payload are not included. No raw logs or screenshots are included in this public-ready starter package pending privacy review.
+
+## Author
+
+Cybersecurity threat-hunting portfolio case study, based on the author's October 2026 Operation ECHOLEAK report.

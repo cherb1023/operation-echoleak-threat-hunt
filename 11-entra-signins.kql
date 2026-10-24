@@ -1,0 +1,7 @@
+// Source: Operation ECHOLEAK investigation report
+// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
+EntraSignIn_CL
+| where RunId == "el--17-20260920"
+| where UserPrincipalName =~ "emily.chen@cormorantcapital.com"
+| where TimeGenerated between (datetime(2026-09-20 08:00) .. datetime(2026-09-20 12:00))
+| project TimeGenerated, IPAddress, Location, Status, ConditionalAccessStatus, AppDisplayName
