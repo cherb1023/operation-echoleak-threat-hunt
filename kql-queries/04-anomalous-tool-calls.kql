@@ -1,14 +1,11 @@
+// Operation ECHOLEAK - Anomalous Copilot Tool Calls
+// Reviewing the tool calls and searches that followed the user's prompt.
+// Checking which tools were used and what data sources they accessed.
 
- // Operation ECHOLEAK - Anomalous Copilot Tool Calls
- // Purpose: Identify Copilot tool calls and search activity following the user's prompt.
- // Data source: CopilotAudit_CL (training environment)
- // Investigation date: September 20, 2026 (UTC)
- // Note: RunId, table names, and SessionId are specific to this lab.
-
- CopilotAudit_CL
- | where RunId == "el--17-20260920"
- | where TimeGenerated between (datetime(2026-09-20 10:42:00) .. datetime(2026-09-20 10:44:00))
- | where SessionId == "cp-emily-20261007-1042"
- | where InteractionType in ("ToolCall", "Search")
- | project TimeGenerated, InteractionType, ToolName, ToolParameters, SessionId, DataSourcesAccessed
- | order by TimeGenerated asc
+CopilotAudit_CL
+| where RunId == "el--17-20260920"
+| where TimeGenerated between (datetime(2026-09-20 10:42:00) .. datetime(2026-09-20 10:44:00))
+| where SessionId == "cp-emily-20261007-1042"
+| where InteractionType in ("ToolCall", "Search")
+| project TimeGenerated, InteractionType, ToolName, ToolParameters, SessionId, DataSourcesAccessed
+| order by TimeGenerated asc
