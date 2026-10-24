@@ -130,6 +130,11 @@ The session produced **three `Graph.SearchFiles` and five `Graph.ReadFile` calls
 
 **Cross-check:** The original report additionally correlated `OfficeActivity_CL` file-access records with the Copilot tool activity. See [`05-sensitive-file-access.kql`](kql-queries/05-sensitive-file-access.kql).
 
+
+**Evidence — Sensitive SharePoint File Access**
+
+![OfficeActivity audit logs showing sensitive SharePoint file access](screenshots/evidence-07.png)
+
 **Original hunting query:** [`04-anomalous-tool-calls.kql`](kql-queries/04-anomalous-tool-calls.kql)
 
 ```kql
