@@ -1,7 +1,13 @@
-// Source: Operation ECHOLEAK investigation report
-// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
-CopilotAudit_CL
-| where RunId == "el--17-20260920"
-| where InteractionType == "Response"
-| where TimeGenerated between (datetime(2026-09-20 10:44:00) .. datetime(2026-09-20 10:45:00))
-| project TimeGenerated, CopilotResponse
+ // Operation ECHOLEAK - Copilot Configuration Disclosure Investigation
+ // Purpose: Examine Copilot responses for exposed system instructions
+ // and enterprise configuration information.
+ // Data source: CopilotAudit_CL (training environment)
+ // Investigation date: September 20, 2026 (UTC)
+ // Note: RunId and table names are specific to this lab.
+ // Evidence limitation: Confirm disclosure by reviewing the CopilotResponse content.
+
+ CopilotAudit_CL
+ | where RunId == "el--17-20260920"
+ | where InteractionType == "Response"
+ | where TimeGenerated between (datetime(2026-09-20 10:44:00) .. datetime(2026-09-20 10:45:00))
+ | project TimeGenerated, CopilotResponse
