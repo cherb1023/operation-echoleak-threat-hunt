@@ -1,14 +1,11 @@
+// Operation ECHOLEAK - External Email Delivery
+// Checking when the suspicious email reached the affected user's mailbox.
+// Reviewing the sender, subject, and attachment details.
 
- // Operation ECHOLEAK - External Email Delivery Investigation
- // Purpose: Identify email delivery events associated with the affected user.
- // Data source: OfficeActivity_CL (training environment)
- // Investigation date: September 20, 2026 (UTC)
- // Note: RunId, table names, and user identifiers are specific to this lab.
-
- OfficeActivity_CL
- | where RunId == "el--17-20260920"
- | where TimeGenerated between (datetime(2026-09-20 09:00) .. datetime(2026-09-20 10:00))
- | where Operation == "MessageReceived"
- | where UserId == "emily.chen@cormorantcapital.com"
- | project TimeGenerated, SenderAddress, Subject, AttachmentNames
- | order by TimeGenerated asc
+OfficeActivity_CL
+| where RunId == "el--17-20260920"
+| where TimeGenerated between (datetime(2026-09-20 09:00) .. datetime(2026-09-20 10:00))
+| where Operation == "MessageReceived"
+| where UserId == "emily.chen@cormorantcapital.com"
+| project TimeGenerated, SenderAddress, Subject, AttachmentNames
+| order by TimeGenerated asc
