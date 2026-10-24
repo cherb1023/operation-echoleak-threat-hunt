@@ -1,16 +1,13 @@
 
- // Operation ECHOLEAK - Historical Sensitive File Access
- // Purpose: Check for prior access to selected sensitive documents.
- // Data source: OfficeActivity_CL (training environment)
- // Investigation cutoff: September 20, 2026, 10:42 UTC
- // Note: Results are limited to available records for this user and RunId.
- // No matching events does not prove that prior access never occurred.
+// Operation ECHOLEAK - Previous File Access
+// Checking whether the user accessed these documents before the incident.
+// Reviewing the available history to see if any earlier access was recorded.
 
- OfficeActivity_CL
- | where RunId == "el--17-20260920"
- | where UserId == "emily.chen@cormorantcapital.com"
- | where Operation == "FileAccessed"
- | where TimeGenerated < datetime(2026-09-20 10:42:00)
- | project TimeGenerated, Operation, UserId, OfficeWorkload, OfficeObjectId
- | where OfficeObjectId has_any ("Board Meeting Minutes", "Project Falcon", "Salary Review FY2027", "Henderson Family Office", "Copilot System Configuration")
- | order by TimeGenerated asc
+OfficeActivity_CL
+| where RunId == "el--17-20260920"
+| where UserId == "emily.chen@cormorantcapital.com"
+| where Operation == "FileAccessed"
+| where TimeGenerated < datetime(2026-09-20 10:42:00)
+| project TimeGenerated, Operation, UserId, OfficeWorkload, OfficeObjectId
+| where OfficeObjectId has_any ("Board Meeting Minutes", "Project Falcon", "Salary Review FY2027", "Henderson Family Office", "Copilot System Configuration")
+| order by TimeGenerated asc
