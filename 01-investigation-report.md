@@ -53,7 +53,9 @@ The investigation identified an **indirect prompt injection attack**, classified
 | 10:45:30–10:45:45 | Five additional keyword searches | Copilot audit activity described in report |
 | 10:45:51–10:46:30 | Eight additional sensitive files accessed | `OfficeActivity_CL` `FileAccessed` |
 
-The document-open event occurred **1 hour, 26 minutes, 46 seconds** after email delivery (about 87 minutes). The report interprets this gap as dependent on when the user chose to open the document and invoke Copilot, not as attacker-controlled timing.
+
+The user opened the document **1 hour, 26 minutes, 46 seconds** after receiving the email (approximately 87 minutes). Based on the timeline, this delay appears to be related to when the user chose to open the document and request a Copilot summary, rather than timing controlled by the attacker.
+
 
 ## Investigation walkthrough and original KQL
 
