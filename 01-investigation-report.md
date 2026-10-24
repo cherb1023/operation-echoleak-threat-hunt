@@ -60,6 +60,10 @@ The following subsections retain the original investigation's sequence and concl
 
 `OfficeActivity_CL` identified one external email with a Word attachment delivered at **09:15:22 UTC**, about 87 minutes before the suspicious file access.
 
+**Evidence — External Email Delivery**
+
+![KQL results showing external email delivery](screenshots/evidence-02.png)
+
 **Original hunting query:** [`01-external-email-delivery.kql`](kql-queries/01-external-email-delivery.kql)
 
 ```kql
