@@ -1,5 +1,11 @@
-// Source: Operation ECHOLEAK investigation report
-// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
+// Operation ECHOLEAK - Microsoft Entra Sign-In Investigation
+// Purpose: Review the affected user's sign-in activity during the incident.
+// Data source: EntraSignIn_CL (training environment)
+// Investigation date: September 20, 2026 (UTC)
+// Note: RunId and user identifiers are specific to this lab.
+// Reviewing sign-in locations, IP addresses, and Conditional Access results
+// for any unusual activity during the investigation.
+
 EntraSignIn_CL
 | where RunId == "el--17-20260920"
 | where UserPrincipalName =~ "emily.chen@cormorantcapital.com"
