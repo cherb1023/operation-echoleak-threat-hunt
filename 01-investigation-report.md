@@ -234,7 +234,12 @@ CopilotAudit_CL
 
 ### 8. Baseline comparison
 
-The scoped baseline contained **90 earlier Copilot events across 16 users**, with no `ToolCall` or `Search` events. In contrast, the suspicious session showed rapid tool use, unrelated first-time file access, and external image links. The finding applies only to the queried telemetry.
+To determine whether this activity was unusual, I reviewed **90 earlier Copilot events involving 16 users**. None of those events contained `ToolCall` or `Search` activity.
+
+The suspicious session stood out because Copilot performed several tool calls in a short period, accessed unrelated sensitive files, and generated external image links. This comparison helped establish why the activity warranted further investigation.
+
+These findings are limited to the historical activity available in the queried logs.
+
 
 **Evidence — Copilot Baseline Comparison**
 
