@@ -1,13 +1,11 @@
- // Operation ECHOLEAK - Suspicious Document Access Investigation
- // Purpose: Identify when the affected user accessed the external Word document.
- // Data source: OfficeActivity_CL (training environment)
- // Investigation date: September 20, 2026 (UTC)
- // Note: RunId, table names, and user identifiers are specific to this lab.
+// Operation ECHOLEAK - Suspicious Document Access
+// Checking when the affected user accessed the Word document.
+// Reviewing the activity leading up to the Copilot session.
 
- OfficeActivity_CL
- | where RunId == "el--17-20260920"
- | where UserId == "emily.chen@cormorantcapital.com"
- | where OfficeObjectId contains "Global-Markets-Review"
- | where TimeGenerated between (datetime(2026-09-20 09:15) .. datetime(2026-09-20 11:00))
- | project TimeGenerated, Operation, OfficeWorkload, OfficeObjectId, AttachmentNames
- | order by TimeGenerated asc
+OfficeActivity_CL
+| where RunId == "el--17-20260920"
+| where UserId == "emily.chen@cormorantcapital.com"
+| where OfficeObjectId contains "Global-Markets-Review"
+| where TimeGenerated between (datetime(2026-09-20 09:15) .. datetime(2026-09-20 11:00))
+| project TimeGenerated, Operation, OfficeWorkload, OfficeObjectId, AttachmentNames
+| order by TimeGenerated asc
