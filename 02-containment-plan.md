@@ -4,9 +4,9 @@ These are **recommendations**, not actions reported as completed.
 
 ## Immediate containment
 
-- Block the sender `quarterly.reports@globalfinancereview.net` and investigate the sending domain `globalfinancereview.net`.
-- Quarantine the attachment `Q3-2026-Global-Markets-Review.docx` across mailboxes after validating matches.
-- Block or investigate outbound requests to `metrics-cdn.analyticshub.io` through relevant DNS/proxy controls.
+- Block the sender `quarterly.reports@globalfinancereview.net` and review the sending domain `globalfinancereview.net` for related activity.
+- Identify and quarantine copies of `Q3-2026-Global-Markets-Review.docx` across affected mailboxes.
+- Investigate any outbound connections to `metrics-cdn.analyticshub.io` and block the domain if confirmed malicious.
 
 ## Impact assessment
 
