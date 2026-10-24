@@ -100,6 +100,11 @@ OfficeActivity_CL
 
 `CopilotAudit_CL` showed the relevant summary request at **10:42:35 UTC**, separate from an earlier normal session. The benign request caused Copilot to process the document, including its hidden attacker instructions.
 
+
+**Evidence — Copilot Prompt and Session**
+
+![Copilot audit results showing the user prompt and session](screenshots/evidence-04.png)
+
 **Original hunting query:** [`03-copilot-prompt.kql`](kql-queries/03-copilot-prompt.kql)
 
 ```kql
