@@ -12,7 +12,10 @@
 
 At **10:42 UTC**, an alert flagged unusual file access after an analyst asked Microsoft 365 Copilot to summarize an external document. Copilot then searched and read unrelated sensitive files, generated external image links with encoded filenames, disclosed configuration details, and performed additional searches.
 
-The report classified the event as **external input manipulation / indirect prompt injection**, mapped to **MITRE ATLAS AML.T0051.001**. In the scoped evidence, **13 unique sensitive files were accessed**. Four external image URLs contained Base64-encoded filenames. **The audit evidence did not demonstrate exfiltration of the complete file contents or confirm that each image URL was fetched by a client.**
+
+The investigation identified an **indirect prompt injection attack**, classified as **external input manipulation** and mapped to **MITRE ATLAS AML.T0051.001**. During the investigation, I identified access to **13 unique sensitive files**. I also found four external image URLs containing Base64-encoded filenames. However, the available audit logs did not confirm that these URLs were accessed or that complete file contents were exfiltrated.
+
+
 
 ## Investigation objectives
 
