@@ -1,13 +1,9 @@
- // Operation ECHOLEAK - Copilot Configuration Disclosure Investigation
- // Purpose: Examine Copilot responses for exposed system instructions
- // and enterprise configuration information.
- // Data source: CopilotAudit_CL (training environment)
- // Investigation date: September 20, 2026 (UTC)
- // Note: RunId and table names are specific to this lab.
- // Evidence limitation: Confirm disclosure by reviewing the CopilotResponse content.
+// Operation ECHOLEAK - Copilot Configuration Disclosure
+// Reviewing Copilot's response for exposed system instructions
+// and internal configuration details.
 
- CopilotAudit_CL
- | where RunId == "el--17-20260920"
- | where InteractionType == "Response"
- | where TimeGenerated between (datetime(2026-09-20 10:44:00) .. datetime(2026-09-20 10:45:00))
- | project TimeGenerated, CopilotResponse
+CopilotAudit_CL
+| where RunId == "el--17-20260920"
+| where InteractionType == "Response"
+| where TimeGenerated between (datetime(2026-09-20 10:44:00) .. datetime(2026-09-20 10:45:00))
+| project TimeGenerated, CopilotResponse
