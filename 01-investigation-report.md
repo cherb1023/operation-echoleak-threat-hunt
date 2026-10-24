@@ -161,9 +161,7 @@ OfficeActivity_CL
 
 ### 6. Response-based filename leakage
 
-At **10:43:08 UTC**, `CopilotResponse` contained four external markdown image URLs with Base64-encoded **filenames** in the `d=` parameter. The response demonstrates a potential image-rendering exfiltration path, but the audit logs do not confirm that the URLs were fetched or that file contents were sent.
-
-**Reported indicator:** `metrics-cdn.analyticshub.io`. Four markdown image URLs contained Base64-encoded filenames in the `d=` query parameter. This is evidence of encoded filename disclosure in the response; it is **not** proof that complete file contents were sent or that every external URL was fetched. The report describes a potential rendering-based exfiltration path.
+At **10:43:08 UTC**, `CopilotResponse` included four external markdown image URLs pointing to `metrics-cdn.analyticshub.io`, with Base64-encoded **filenames** in the `d=` parameter. This exposed filenames in the response and suggested a potential image-rendering exfiltration path. The audit logs do **not** confirm URL retrieval or exfiltration of file contents.
 
 **Original hunting query:** [`07-exfiltration-response.kql`](kql-queries/07-exfiltration-response.kql)
 
@@ -197,9 +195,7 @@ CopilotAudit_CL
 
 ### 8. Baseline comparison
 
-The baseline contained **90 earlier Copilot events across 16 users**, with no `ToolCall` or `Search` events in the scoped data. The suspicious session stood out for rapid tool use, unrelated first-time file access, and external image links.
-
-**Scoped baseline:** 90 earlier Copilot events from 16 users, with no tool-call or search events in the queried dataset. This comparison does not establish that Copilot never uses tools outside this scope.
+The scoped baseline contained **90 earlier Copilot events across 16 users**, with no `ToolCall` or `Search` events. In contrast, the suspicious session showed rapid tool use, unrelated first-time file access, and external image links. The finding applies only to the queried telemetry.
 
 **Original hunting query:** [`09-baseline-comparison.kql`](kql-queries/09-baseline-comparison.kql)
 
