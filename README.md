@@ -2,7 +2,8 @@
 
 **Portfolio case study | Microsoft 365 Copilot • KQL • Microsoft 365 audit telemetry • Incident response**
 
-> **Training-case disclosure:** This repository is prepared from an investigation exercise report. Confirm the environment was simulated and that all identifiers and evidence are authorized for public release before publishing.
+> **Training Environment Disclosure:** Operation ECHOLEAK is a cybersecurity threat-hunting case study based on a simulated Microsoft 365 Copilot security incident. The investigation demonstrates the use of KQL, Microsoft 365 audit telemetry, and incident response techniques to analyze an indirect prompt injection attack. All findings and evidence originate from the training scenario and do not represent a confirmed real-world security breach.
+
 
 ## Executive summary
 
