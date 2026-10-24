@@ -333,7 +333,7 @@ These values are **scenario-specific indicators**, not independently verified li
 5. **Telemetry expansion:** hunt for other recipients of the same sender and other sessions with similar tool activity or response URLs.
 6. **Awareness:** brief Blue Team and Detection Engineering teams on hidden instructions in external documents.
 
-See the separate [containment and remediation plan](containment-plan.md) for the portfolio's action list.
+See the separate [containment and remediation plan](02-containment-plan.md) for the portfolio's action list.
 
 ## Diamond Model of Intrusion Analysis
 
