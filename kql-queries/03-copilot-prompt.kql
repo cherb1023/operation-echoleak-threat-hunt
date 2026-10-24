@@ -1,9 +1,14 @@
-// Source: Operation ECHOLEAK investigation report
-// Lab-specific tables, RunId, and user identifiers; adapt before reuse.
-CopilotAudit_CL
-| where RunId == "el--17-20260920"
-| where UserId == "emily.chen@cormorantcapital.com"
-| where InteractionType == "Prompt"
-| where TimeGenerated between (datetime(2026-09-20 10:30) .. datetime(2026-09-20 10:50))
-| project TimeGenerated, UserPrompt, Application, SessionId
-| order by TimeGenerated asc
+
+ // Operation ECHOLEAK - Copilot Prompt Investigation
+ // Purpose: Identify the affected user's Copilot prompts before suspicious tool activity.
+ // Data source: CopilotAudit_CL (training environment)
+ // Investigation date: September 20, 2026 (UTC)
+ // Note: RunId, table names, and user identifiers are specific to this lab.
+
+ CopilotAudit_CL
+ | where RunId == "el--17-20260920"
+ | where UserId == "emily.chen@cormorantcapital.com"
+ | where InteractionType == "Prompt"
+ | where TimeGenerated between (datetime(2026-09-20 10:30) .. datetime(2026-09-20 10:50))
+ | project TimeGenerated, UserPrompt, Application, SessionId
+ | order by TimeGenerated asc
