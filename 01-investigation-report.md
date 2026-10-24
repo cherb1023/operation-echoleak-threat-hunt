@@ -163,6 +163,11 @@ The scoped `OfficeActivity_CL` query found no earlier access to the five sensiti
 
 **Limit:** The first-time determination applies to the available scoped `RunId` telemetry and queried period.
 
+
+**Evidence — First-Time Sensitive-File Access**
+
+![KQL results showing no earlier access to the five sensitive files within the queried scope](screenshots/evidence-09.png)
+
 **Original hunting query:** [`06-first-time-access.kql`](kql-queries/06-first-time-access.kql)
 
 ```kql
