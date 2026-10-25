@@ -73,4 +73,8 @@ This project was completed in a simulated training environment. The organization
 
 ## Author
 
-Cybersecurity threat-hunting portfolio case study, based on the author's October 2026 Operation ECHOLEAK report.
+## Author
+
+This project is part of my cybersecurity portfolio and demonstrates my hands-on experience with threat hunting, KQL, Microsoft 365 security investigations, and incident response planning.
+
+The investigation was completed using a simulated security incident, with a focus on identifying suspicious activity, reviewing audit logs, and documenting findings.
