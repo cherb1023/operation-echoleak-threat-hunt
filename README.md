@@ -68,7 +68,7 @@ Queries refer to custom lab tables and a specific `RunId`, so they are **not** p
 
 The repository includes seven evidence screenshots from the original investigation report, along with 11 KQL queries and supporting analysis. The underlying Word document, its embedded prompt-injection payload, and raw audit logs are not included.
 
-This project is based on a controlled training scenario. All screenshots and scenario identifiers should be reviewed for sensitive information before the repository is made public.
+This project was completed in a simulated training environment. The organization, users, email addresses, and investigation evidence are fictional and used solely for educational and portfolio purposes.
 
 
 ## Author
