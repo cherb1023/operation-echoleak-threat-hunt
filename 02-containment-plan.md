@@ -10,9 +10,9 @@ These are **recommendations**, not actions reported as completed.
 
 ## Impact assessment
 
-- Review the 13 accessed files with data owners and determine whether any contents were disclosed.
-- Check network/proxy evidence for image URL retrieval and determine what data actually left the environment.
-- Engage legal and compliance stakeholders for any reporting or notification decisions.
+- Review the 13 accessed files with their respective data owners to determine what sensitive information may have been exposed.
+- Check DNS, proxy, and network logs to see whether the external image URLs were actually requested and whether any data was transmitted.
+- Work with the legal and compliance teams to determine whether the findings require additional reporting or notification.
 
 ## Hardening and detection
 
