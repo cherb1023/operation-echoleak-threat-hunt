@@ -16,13 +16,13 @@ These are **recommendations**, not actions reported as completed.
 
 ## Hardening and detection
 
-- Review Copilot access scopes and least-privilege permissions.
-- Evaluate restrictions on externally hosted images/links in generated responses.
-- Alert on bursts of unrelated first-time sensitive-file reads following summarization requests.
-- Inspect Copilot responses for external URLs with long encoded query parameters.
-- Hunt for other recipients of the attachment and sessions exhibiting similar patterns.
-- Brief Blue Team and detection engineering teams on the mechanism and telemetry gaps.
+- Review Copilot's access permissions to determine whether users have access to more sensitive information than they need.
+- Look into ways to restrict external images and links in Copilot responses.
+- Create alerts for unusual spikes in sensitive-file access, especially when multiple unrelated documents are accessed after a summarization request.
+- Monitor Copilot responses for suspicious external URLs containing long or encoded query parameters.
+- Check whether other users received the same attachment and review their Copilot activity for similar behavior.
+- Share the findings with the Blue Team and detection engineering teams to help improve monitoring and identify gaps in the available logs.
 
 ## Validation
 
-Confirm each control is technically supported in the actual tenant and test detections for false positives before deployment.
+Before implementing these recommendations, confirm which controls are supported in the organization's Microsoft 365 environment. Any new detection rules should also be tested to make sure they identify suspicious activity without generating unnecessary alerts.
