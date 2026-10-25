@@ -56,7 +56,11 @@ The report classifies the incident as **external input manipulation / indirect p
 
 ## Recommended response
 
-Block the malicious sender and external domain, quarantine the document, investigate other recipients and affected Copilot sessions, assess file-owner impact, review permissions and external-content rendering controls, and create detections for anomalous tool-call bursts and encoded external links. See the [response plan](containment-plan.md).
+## Recommended response
+
+The recommended next steps include blocking the suspicious sender, investigating the external domain, and quarantining copies of the malicious document. The response plan also covers reviewing affected Copilot sessions, assessing potential data exposure, and improving detection rules to identify similar activity.
+
+See the [Containment and Remediation Plan](02-containment-plan.md) for the full recommendations.
 
 ## Scope and reproducibility
 
