@@ -12,7 +12,7 @@
 At **10:42 UTC**, an alert flagged unusual file access after an analyst asked Microsoft 365 Copilot to summarize an external document. Copilot then searched and read unrelated sensitive files, generated external image links with encoded filenames, disclosed configuration details, and performed additional searches.
 
 
-The investigation identified an **indirect prompt injection attack**, classified as **external input manipulation** and mapped to **MITRE ATLAS AML.T0051.001**. During the investigation, I identified access to **13 unique sensitive files**. I also found four external image URLs containing Base64-encoded filenames. However, the available audit logs did not confirm that these URLs were accessed or that complete file contents were exfiltrated.
+The investigation identified an indirect prompt injection attack, classified as external input manipulation and mapped to **MITRE ATLAS AML.T0051.001**. During the investigation, I identified access to 13 unique sensitive files. I also found four external image URLs containing Base64-encoded filenames. However, the available audit logs did not confirm that these URLs were accessed or that complete file contents were exfiltrated.
 
 
 
@@ -194,7 +194,7 @@ OfficeActivity_CL
 
 At **10:43:08 UTC**, I identified four external image URLs in `CopilotResponse` pointing to `metrics-cdn.analyticshub.io`. These URLs contained Base64-encoded filenames in the `d=` parameter.
 
-This raised concerns about a possible data exfiltration method because the encoded filenames could be transmitted to an external server if the image URLs were requested. However, the available audit logs did **not** confirm that these URLs were accessed or that complete file contents were exfiltrated.
+This raised concerns about a possible data exfiltration method because the encoded filenames could be transmitted to an external server if the image URLs were requested. However, the available audit logs did not confirm that these URLs were accessed or that complete file contents were exfiltrated.
 
 
 **Evidence — Base64-Encoded Filename Leakage**
@@ -233,7 +233,7 @@ CopilotAudit_CL
 
 ### 8. Baseline comparison
 
-To determine whether this activity was unusual, I reviewed **90 earlier Copilot events involving 16 users**. None of those events contained `ToolCall` or `Search` activity.
+To determine whether this activity was unusual, I reviewed 90 earlier Copilot events involving 16 users. None of those events contained `ToolCall` or `Search` activity.
 
 The suspicious session stood out because Copilot performed several tool calls in a short period, accessed unrelated sensitive files, and generated external image links. This comparison helped establish why the activity warranted further investigation.
 
@@ -258,7 +258,7 @@ CopilotAudit_CL
 
 ### 9. SearchLeak and additional file access
 
-From **10:45:30–10:45:45 UTC**, Copilot searched for `confidential`, `restricted`, `board`, `acquisition`, and `salary`. Eight additional sensitive files were accessed by **10:46:30 UTC**, bringing the total to **13 unique files**.
+From **10:45:30–10:45:45 UTC**, Copilot searched for `confidential`, `restricted`, `board`, `acquisition`, and `salary`. Eight additional sensitive files were accessed by **10:46:30 UTC**, bringing the total to 13 unique files.
 
 **Eight additional files reported:**
 
@@ -271,7 +271,7 @@ From **10:45:30–10:45:45 UTC**, Copilot searched for `confidential`, `restrict
 - Board Committee Minutes - Audit Committee.docx
 - Quarterly Revenue Report - Restricted Distribution.xlsx
 
-Together with the first five, the report counts **13 unique sensitive files**.
+Together with the first five, the report counts 13 unique sensitive files.
 
 **Original hunting query:** [`10-additional-file-access.kql`](kql-queries/10-additional-file-access.kql)
 
@@ -289,11 +289,11 @@ OfficeActivity_CL
 
 ### 10. Incident classification and sign-in review
 
-The evidence favors **indirect prompt injection (`AML.T0051.001`)**. Reviewed sign-ins showed no anomalies, and the configuration file was read but not modified. These checks reduce support for account or configuration compromise within the investigated scope.
+The evidence favors indirect prompt injection ('AML.T0051.001'). Reviewed sign-ins showed no anomalies, and the configuration file was read but not modified. These checks reduce support for account or configuration compromise within the investigated scope.
 
 **Alternative explanations considered:** (1) account compromise, (2) configuration compromise, and (3) external input manipulation. The report favors the third based on normal sign-in telemetry and read-only configuration-file access in the reviewed data. This does not prove absence of compromise beyond the examined telemetry.
 
-**Original hunting query:** [`11-entra-signins.kql`](kql-queries/11-entra-signins.kql)
+**Original hunting query:** ['11-entra-signins.kql'](kql-queries/11-entra-signins.kql)
 
 ```kql
 // Source: Operation ECHOLEAK investigation report
