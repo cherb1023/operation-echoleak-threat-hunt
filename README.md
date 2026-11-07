@@ -7,7 +7,7 @@
 
 ## Executive summary
 
-This investigation examined suspicious Microsoft 365 Copilot file access following an externally delivered Word document. The case report attributes the activity to **indirect prompt injection**: the user requested an ordinary document summary, but Copilot subsequently searched for and read unrelated sensitive files and returned external image URLs containing encoded filenames.
+This investigation examined suspicious Microsoft 365 Copilot file access following an externally delivered Word document. The case report attributes the activity to indirect prompt injection: the user requested an ordinary document summary, but Copilot subsequently searched for and read unrelated sensitive files and returned external image URLs containing encoded filenames.
 
 **Observed in the report:** 13 sensitive files accessed (five initially, eight subsequently), eight initial Graph tool calls (three `Graph.SearchFiles`, five `Graph.ReadFile`), a separate system-prompt/configuration disclosure, and an external image-URL exfiltration mechanism. **Important limitation:** the report indicates the encoded URLs exposed filenames, not the contents of the accessed files; actual delivery of HTTP requests is not independently established by the cited audit records.
 
@@ -41,9 +41,9 @@ External email → Word attachment → Copilot summary request
 
 ## Findings and confidence
 
-The report classifies the incident as **external input manipulation / indirect prompt injection** (MITRE ATLAS `AML.T0051.001`). The observed Copilot behavior differs from the reported baseline of 90 events from 16 users with no ToolCall/Search events. Sign-in telemetry did not show anomalous sign-ins in the reviewed window. These observations support the case classification but are bounded by the provided lab telemetry.
+The report classifies the incident as external input manipulation / indirect prompt injection (MITRE ATLAS `AML.T0051.001`). The observed Copilot behavior differs from the reported baseline of 90 events from 16 users with no ToolCall/Search events. Sign-in telemetry did not show anomalous sign-ins in the reviewed window. These observations support the case classification but are bounded by the provided lab telemetry.
 
-**Impact caveat:** Access to 13 files does **not** prove the contents of all 13 were exfiltrated. The reported encoded URL parameters contained filenames. A network/proxy corroboration step would be needed to establish outbound retrieval and transmitted data beyond the audit response text.
+**Impact caveat:** Access to 13 files does not prove the contents of all 13 were exfiltrated. The reported encoded URL parameters contained filenames. A network/proxy corroboration step would be needed to establish outbound retrieval and transmitted data beyond the audit response text.
 
 
 ## Investigation artifacts
@@ -64,7 +64,7 @@ See the [Containment and Remediation Plan](02-containment-plan.md) for the full 
 
 ## Scope and reproducibility
 
-Queries refer to custom lab tables and a specific `RunId`, so they are **not** plug-and-play in a different Microsoft 365 tenant.
+Queries refer to custom lab tables and a specific `RunId`, so they are not plug-and-play in a different Microsoft 365 tenant.
 
 The repository includes seven evidence screenshots from the original investigation report, along with 11 KQL queries and supporting analysis. The underlying Word document, its embedded prompt-injection payload, and raw audit logs are not included.
 
