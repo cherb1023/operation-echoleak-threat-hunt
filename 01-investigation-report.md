@@ -6,7 +6,6 @@
 **Environment:** Cormorant Capital Partners (training scenario described in source report)  
 **Status:** All 17 investigation flags documented in the original report
 
-> **Portfolio provenance:** Reconstructed from the investigator's original 12-page *Threat Hunt Report: Operation ECHOLEAK Investigation*. This is a case study of the provided lab scenario, not a claim of a real-world breach or independent verification. All observations and conclusions below are attributed to that report. Keep this repository private until you have reviewed all identifiers and screenshots for publication.
 
 ## Executive summary
 
